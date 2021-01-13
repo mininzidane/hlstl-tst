@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        .content-container {
+            padding-top: 15px;
+        }
+
+        input[type="radio"] {
+            margin-left: 15px;
+            margin-right: 5px;
+        }
+
+        input[type="radio"]:first-child {
+            margin-left: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <table class="table table-bordered">
+        <tr>
+            <th>user_id</th>
+            <th>email</th>
+            <th>age</th>
+            <th>name</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>alex@mail.com</td>
+            <td>67</td>
+            <td>Alex Norton</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>mary@gmail.com</td>
+            <td>18</td>
+            <td>Marry Shawn</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>dan@ya.ru</td>
+            <td>34</td>
+            <td>Dan Hoff</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>alexey@mail.com</td>
+            <td>50</td>
+            <td>Alexey Ivanov</td>
+        </tr>
+    </table>
+
+    <div class="row">
+        {{ form_start(emailForm, {'attr':{'novalidate': 'novalidate'}}) }}
+        <div class="mb-3 row">
+            {{ form_label(emailForm.strategy, null, {'label_attr': {'class': 'col-sm-2 col-form-label'} }) }}
+            <div class="col-sm-10">
+                {{ form_widget(emailForm.strategy) }}
+            </div>
+        </div>
+        <div class="mb-3 row">
+            {{ form_label(emailForm.template, null, {'label_attr': {'class': 'col-sm-2 col-form-label'} }) }}
+            <div class="col-sm-10">
+                {{ form_widget(emailForm.template, {'attr': {'class': 'form-control', 'rows': 10} }) }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send emails</button>
+
+        {{ form_end(emailForm) }}
+    </div>
+{% endblock %}
